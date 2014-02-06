@@ -46,8 +46,13 @@ namespace HIPControl
                     break;
             } while ((DateTime.Now - Globals.AlertStart.Value).TotalMinutes < Constants.TimeOut);
 
-            Globals.AlertTimer.Stop();
 
+            Utils.HideAlert();
+
+            if (Globals.AlertTimer != null)
+            {
+                Globals.AlertTimer.Stop();    
+            }
         }
 
         static void AlertTimer_Elapsed(object sender, ElapsedEventArgs e)
