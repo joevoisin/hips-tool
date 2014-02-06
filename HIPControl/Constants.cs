@@ -13,11 +13,11 @@ namespace HIPControl
         internal const string HIPStartParams = "/start";
 
         //internal const string PingHosts = "DC01,DC02,DRDC01,DRDC02";
-        //internal const string PingHosts = "10.128.33.177,10.128.33.170,10.116.10.10,10.116.10.11";
-        internal const string PingHosts = "1.2.3.4";
+        internal const string PingHosts = "10.128.33.177,10.128.33.170,10.116.10.10,10.116.10.11";
+        //internal const string PingHosts = "1.2.3.4";
 
         internal const string TestURL = "http://www.meridiancu.ca"; //url to test
-        internal const string URLContentCheckRegEx = "<title>Meridian Credit Union</title>"; //use any regex
+        internal const string URLContentCheckRegEx = "Meridian Credit Union"; //use any regex
         internal const int TestURLTimeout = 4000; //milliseconds for web site to load
 
         internal const int TimeOut = 5; //firewall re-enable seconds
