@@ -42,9 +42,12 @@ namespace HIPControl
             do
             {
                 Application.DoEvents();
-                if (Globals.AlertStart == null)
+                if (Globals.AlertStart == null) 
                     break;
             } while ((DateTime.Now - Globals.AlertStart.Value).TotalMinutes < Constants.TimeOut);
+
+            Globals.AlertTimer.Stop();
+
         }
 
         static void AlertTimer_Elapsed(object sender, ElapsedEventArgs e)

@@ -41,7 +41,16 @@ namespace HIPControl
         internal static void HideAlert()
         {
             if (Globals.AlertForm != null && !Globals.AlertForm.IsDisposed)
-                Globals.AlertForm.Close();  // this is thorwing the error.
+            {
+                if (Globals.AlertForm.InvokeRequired)
+                {
+                    Globals.AlertForm.Invoke(new Action(HideAlert));
+                    return;
+                }
+
+                Globals.AlertForm.Close();  
+            }
+                
             Globals.AlertForm = null;
         }
 
