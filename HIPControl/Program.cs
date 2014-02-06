@@ -18,7 +18,7 @@ namespace HIPControl
             {
                 switch (arg.ToLower())
                 {
-                    case "-shutdown":
+                    case "-shutdown4now":
                         Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
                         return;
                 }
