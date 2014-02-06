@@ -21,7 +21,7 @@ namespace HIPControl
                 return;
 
             //stop HIP
-            Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
+            //Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
 
             var isOnline = WebHelper.HasWebTraffic();
             if (isOnline)
@@ -36,9 +36,12 @@ namespace HIPControl
             Globals.AlertTimer.AutoReset = true;
             Globals.AlertTimer.Elapsed += AlertTimer_Elapsed;
             Globals.AlertTimer.Start();
-
             Utils.ShowAlert(true);
 
+            Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
+            //moved the stopping of HIPS to after the web check since technically www.meridiancu.ca is globablly allowed in HIPS.
+            //only time it needs to be stopped is when we are going to portal.. this will also help detect the hotspots since
+            //redirections will be denied by HIPs and subsequently the HTTP get will fail.
             do
             {
                 Application.DoEvents();
