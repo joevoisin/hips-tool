@@ -17,7 +17,7 @@ namespace HIPControl
         internal const string PingHosts = "1.2.3.4";
 
         internal const string TestURL = "http://www.meridiancu.ca"; //url to test
-        internal const string URLContentCheckRegEx = "<title>Meridian Credit Union</title>"; //use any regex
+        internal const string URLContentCheckRegEx = "<title>mMeridian Credit Union</title>"; //use any regex
         internal const int TestURLTimeout = 4000; //milliseconds for web site to load
 
         internal const int TimeOut = 5; //firewall re-enable seconds

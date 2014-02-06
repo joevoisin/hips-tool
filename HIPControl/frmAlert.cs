@@ -45,5 +45,10 @@ namespace HIPControl
             lblCountdown.Text = String.Format("Time Remaining: {0:00}:{1:00}", remain.Minutes, remain.Seconds);
         }
 
+        private void lblMessage_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
