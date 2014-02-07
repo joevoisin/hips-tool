@@ -18,9 +18,9 @@ namespace HIPControl
 
         internal const string TestURL = "http://www.meridiancu.ca"; //url to test
         internal const string URLContentCheckRegEx = "mMeridian Credit Union"; //use any regex
-        internal const int TestURLTimeout = 4000; //milliseconds for web site to load
+        internal const int TestURLTimeout = 5000; //milliseconds for web site to load
 
-        internal const int TimeOut = 5; //firewall re-enable seconds
+        internal const int TimeOut = 1; //firewall re-enable seconds
         internal const int RecheckInterval = 20; //seconds between rechecking for AD servers and webserver.
     }
 }

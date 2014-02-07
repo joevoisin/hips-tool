@@ -28,8 +28,6 @@ namespace HIPControl
             Globals.AlertTimer.Stop();
             Utils.HideAlert();
             Globals.AlertStart = null;
-            Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStartParams);
-            return;
         }
 
         private void frmAlert_Load(object sender, EventArgs e)

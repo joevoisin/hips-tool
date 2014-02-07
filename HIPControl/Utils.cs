@@ -18,7 +18,7 @@ namespace HIPControl
             options.CreateNoWindow = true;
             options.RedirectStandardOutput = false;
             options.WindowStyle = ProcessWindowStyle.Hidden;
-
+            //MessageBox.Show(Path + " " + Args);
             try
             {
                 var proc = Process.Start(options);
@@ -57,16 +57,12 @@ namespace HIPControl
 
         internal static void CleanUp()
         {
-
             HideAlert();
-
             if (Globals.AlertTimer != null)
             {
                 Globals.AlertTimer.Stop();
                 Globals.AlertTimer = null;
             }
-
-
         }
 
     }
