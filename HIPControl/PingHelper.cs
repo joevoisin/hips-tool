@@ -22,7 +22,7 @@ namespace HIPControl
                 try
                 {
                     var reply = ping.Send(host, 120, buffer, opt);
-                    System.Console.WriteLine(reply);
+                    //System.Console.WriteLine(reply);
                     if (reply != null && reply.Status == IPStatus.Success)
                         return reply.RoundtripTime;
                 }

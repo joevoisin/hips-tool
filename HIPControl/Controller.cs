@@ -55,13 +55,20 @@ namespace HIPControl
             var resp = PingHelper.PingHosts(Constants.PingHosts.Split(',').ToList());
             if (resp.HasValue) //back on the domain
             {
+                Globals.AlertTimer.Stop();
+                Utils.HideAlert();
                 Globals.AlertStart = null;
                 return;
             }
 
             var isOnline = WebHelper.HasWebTraffic();
             if (isOnline || (DateTime.Now - Globals.AlertStart.Value).TotalMinutes >= Constants.TimeOut)
+            {
+                Globals.AlertTimer.Stop();
+                Utils.HideAlert();
                 Globals.AlertStart = null;
+            }
+
             else
                 Utils.ShowAlert(false);
         }
