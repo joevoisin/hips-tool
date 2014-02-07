@@ -27,9 +27,7 @@ namespace HIPControl
                     proc.WaitForExit();
             }
             catch (Exception)
-            {
-                    //ignore
-            }
+            { }
         }
 
         internal static void ShowAlert(bool Reset)
@@ -65,9 +63,7 @@ namespace HIPControl
                 Globals.AlertTimer.Stop();
                 Globals.AlertTimer = null;
             }
-
             HideAlert();
-
         }
 
         internal static bool HasGateway()

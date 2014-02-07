@@ -10,7 +10,6 @@ namespace HIPControl
     {
         internal static frmAlert AlertForm;
         internal static Timer AlertTimer;
-
         internal static DateTime? AlertStart;
     }
 }

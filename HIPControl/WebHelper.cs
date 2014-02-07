@@ -13,8 +13,6 @@ namespace HIPControl
     {
         public static bool HasWebTraffic()
         {
-//            return false;
-
             try
             {
                 var req = WebRequest.Create(Constants.TestURL);
@@ -33,19 +31,13 @@ namespace HIPControl
                     responseString = responseString.Replace("\r", "");
                     responseString = responseString.Replace("\n", "");
                     responseString = responseString.Replace("\t", "");
-
                     var test = new Regex(Constants.URLContentCheckRegEx);
-
                     return test.IsMatch(responseString);
                }
             }
             catch
-            {
-                //ignore
-            }
-
+            { }
             return false;
-
         }
     }
 }

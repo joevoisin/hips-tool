@@ -18,15 +18,19 @@ namespace HIPControl
             var resp = PingHelper.PingHosts(new List<string>(Constants.PingHosts.Split(',')));
             if (resp.HasValue)
                 return;
-
-            Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
-
+            //pings have failed, so they aren't on the domain.. but lets check to see if we can get to meridiancu.ca
+            //without having to disable HIPS.  If they are behind a captive portal or hotspot they may need to login.
             var isOnline = WebHelper.HasWebTraffic();
             if (isOnline)
             {
+                //Website is reachable as required, exiting enable hips just to make sure it's enabled.
                 Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStartParams);
                 return;
             }
+            //Website is not reachable or is not sending data back as expected.
+            //It is possible that they need to log into a captive portal (hotspot)
+            //disable hips and tell user to log into the network.
+            Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
             Globals.AlertStart = DateTime.Now;
 
             Globals.AlertTimer = new Timer(Constants.RecheckInterval * 1000);
