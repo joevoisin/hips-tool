@@ -21,6 +21,6 @@ namespace HIPControl
         internal const int TestURLTimeout = 4000; //milliseconds for web site to load
 
         internal const int TimeOut = 5; //firewall re-enable seconds
-        internal const int RecheckInterval = 1; //seconds between rechecking for AD servers and webserver.
+        internal const int RecheckInterval = 20; //seconds between rechecking for AD servers and webserver.
     }
 }

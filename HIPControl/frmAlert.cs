@@ -18,10 +18,10 @@ namespace HIPControl
 
         public frmAlert(string Message) : this()
         {
-            lblMessage.Text = Message;
+            LabelInstruction1.Text = Message;
         }
 
-        public string WarningText { get { return lblMessage.Text; } set { lblMessage.Text = value; } }
+        public string WarningText { get { return LabelInstruction1.Text; } set { LabelInstruction1.Text = value; } }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
