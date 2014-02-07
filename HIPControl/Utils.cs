@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace HIPControl
@@ -18,7 +19,7 @@ namespace HIPControl
             options.CreateNoWindow = true;
             options.RedirectStandardOutput = false;
             options.WindowStyle = ProcessWindowStyle.Hidden;
-
+            //MessageBox.Show(Path + " " + Args);
             try
             {
                 var proc = Process.Start(options);
@@ -27,6 +28,7 @@ namespace HIPControl
             }
             catch (Exception)
             {
+                    //ignore
             }
         }
 
@@ -56,8 +58,7 @@ namespace HIPControl
 
         internal static void CleanUp()
         {
-
-            HideAlert();
+            Globals.AlertStart = null;
 
             if (Globals.AlertTimer != null)
             {
@@ -65,7 +66,13 @@ namespace HIPControl
                 Globals.AlertTimer = null;
             }
 
+            HideAlert();
 
+        }
+
+        internal static bool HasGateway()
+        {
+            return System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
         }
 
     }

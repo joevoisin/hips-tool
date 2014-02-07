@@ -11,7 +11,6 @@ namespace HIPControl
     internal class PingHelper
     {
         private const string Data = "abcdefghijklmnopqrstuvwxyz123456";
-
         internal static long? PingHosts(List<string> hosts)
         {
             foreach (var host in hosts)
@@ -28,13 +27,9 @@ namespace HIPControl
                         return reply.RoundtripTime;
                 }
                 catch 
-                {
-                    //ignore
-                }
+                { }
             }
-
             return null;
-
         }
     }
 }

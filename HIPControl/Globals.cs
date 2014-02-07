@@ -12,6 +12,5 @@ namespace HIPControl
         internal static Timer AlertTimer;
 
         internal static DateTime? AlertStart;
-
     }
 }

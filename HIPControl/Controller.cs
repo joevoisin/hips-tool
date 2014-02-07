@@ -12,7 +12,6 @@ namespace HIPControl
 {
     internal class Controller
     {
-
         public static void Run()
         {
             //ping hosts
@@ -20,8 +19,7 @@ namespace HIPControl
             if (resp.HasValue)
                 return;
 
-            //stop HIP
-            //Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
+            Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
 
             var isOnline = WebHelper.HasWebTraffic();
             if (isOnline)
@@ -31,66 +29,37 @@ namespace HIPControl
             }
             Globals.AlertStart = DateTime.Now;
 
-            Globals.AlertTimer = new Timer(Constants.TimeOutWarnInterval * 60 * 1000);
+            Globals.AlertTimer = new Timer(Constants.RecheckInterval * 1000);
             Globals.AlertTimer.Enabled = true;
             Globals.AlertTimer.AutoReset = true;
             Globals.AlertTimer.Elapsed += AlertTimer_Elapsed;
             Globals.AlertTimer.Start();
             Utils.ShowAlert(true);
 
-            Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStopParams);
-            //moved the stopping of HIPS to after the web check since technically www.meridiancu.ca is globablly allowed in HIPS.
-            //only time it needs to be stopped is when we are going to portal.. this will also help detect the hotspots since
-            //redirections will be denied by HIPs and subsequently the HTTP get will fail.
             do
             {
                 Application.DoEvents();
-                if (Globals.AlertStart == null) 
-                    break;
-            } while ((DateTime.Now - Globals.AlertStart.Value).TotalMinutes < Constants.TimeOut);
-
-
-            Utils.HideAlert();
-
-            if (Globals.AlertTimer != null)
-            {
-                Globals.AlertTimer.Stop();    
-            }
+                Thread.Sleep(50); //don't chew up resources
+            } while (Globals.AlertStart != null && (DateTime.Now - Globals.AlertStart.Value).TotalMinutes < Constants.TimeOut);
         }
 
         static void AlertTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (Globals.AlertStart == null)
-            {
-                Globals.AlertTimer.Stop();
                 return;
-            }
 
-            var resp = PingHelper.PingHosts(new List<string>(Constants.PingHosts.Split(',')));
+            var resp = PingHelper.PingHosts(Constants.PingHosts.Split(',').ToList());
             if (resp.HasValue) //back on the domain
             {
-                Globals.AlertTimer.Stop();
-                Utils.HideAlert();
                 Globals.AlertStart = null;
-                Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStartParams);
+                return;
             }
 
             var isOnline = WebHelper.HasWebTraffic();
             if (isOnline || (DateTime.Now - Globals.AlertStart.Value).TotalMinutes >= Constants.TimeOut)
-            {
-                Globals.AlertTimer.Stop();
-                Utils.HideAlert();
-
                 Globals.AlertStart = null;
-                Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStartParams);
-
-            }
             else
-            {
                 Utils.ShowAlert(false);
-            }
-
         }
-
     }
 }

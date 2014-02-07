@@ -41,8 +41,7 @@ namespace HIPControl
             }
             catch
             {
-
-                
+                //ignore
             }
 
             return false;

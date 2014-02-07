@@ -31,17 +31,20 @@
             this.components = new System.ComponentModel.Container();
             this.lblCountdown = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.LabelInstruction1 = new System.Windows.Forms.Label();
+            this.LabInstruction2 = new System.Windows.Forms.Label();
+            this.LabelImportantNotice = new System.Windows.Forms.Label();
+            this.BtnWorkOffine = new System.Windows.Forms.Button();
+            this.LabelOfflineWarning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblCountdown
             // 
             this.lblCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountdown.Location = new System.Drawing.Point(0, 126);
+            this.lblCountdown.Location = new System.Drawing.Point(7, 166);
+            this.lblCountdown.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCountdown.Name = "lblCountdown";
-            this.lblCountdown.Size = new System.Drawing.Size(171, 24);
+            this.lblCountdown.Size = new System.Drawing.Size(228, 30);
             this.lblCountdown.TabIndex = 2;
             this.lblCountdown.Text = "Time Remaining: ";
             // 
@@ -49,59 +52,85 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lblMessage
+            // LabelInstruction1
             // 
-            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(0, 16);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(207, 96);
-            this.lblMessage.TabIndex = 0;
-            this.lblMessage.Text = "If you are connecting to a hotspot (hotel, coffee shop) you will need to authenti" +
-    "cate before the time remaining reaches 0. If you are working offline, click the " +
-    "button to dismiss this warning.";
-            this.lblMessage.Click += new System.EventHandler(this.lblMessage_Click);
+            this.LabelInstruction1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelInstruction1.Location = new System.Drawing.Point(0, 26);
+            this.LabelInstruction1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelInstruction1.Name = "LabelInstruction1";
+            this.LabelInstruction1.Size = new System.Drawing.Size(378, 26);
+            this.LabelInstruction1.TabIndex = 0;
+            this.LabelInstruction1.Text = "Connect to the internet before starting VDI.";
+            this.LabelInstruction1.Click += new System.EventHandler(this.lblMessage_Click);
             // 
-            // label1
+            // LabInstruction2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Important Notice";
+            this.LabInstruction2.Location = new System.Drawing.Point(3, 46);
+            this.LabInstruction2.Name = "LabInstruction2";
+            this.LabInstruction2.Size = new System.Drawing.Size(375, 77);
+            this.LabInstruction2.TabIndex = 3;
+            this.LabInstruction2.Text = "If you are connecting from a hotel you may need to log into the Hotel hotspot bef" +
+    "ore access is granted.   You have 5 minutes to connect before access controls ar" +
+    "e engaged.";
+            this.LabInstruction2.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button1
+            // LabelImportantNotice
             // 
-            this.button1.Location = new System.Drawing.Point(48, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Working Offline";
-            this.button1.UseVisualStyleBackColor = true;
+            this.LabelImportantNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelImportantNotice.ForeColor = System.Drawing.Color.Red;
+            this.LabelImportantNotice.Location = new System.Drawing.Point(0, 3);
+            this.LabelImportantNotice.Name = "LabelImportantNotice";
+            this.LabelImportantNotice.Size = new System.Drawing.Size(378, 23);
+            this.LabelImportantNotice.TabIndex = 4;
+            this.LabelImportantNotice.Text = "Important Notice";
+            this.LabelImportantNotice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // BtnWorkOffine
+            // 
+            this.BtnWorkOffine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnWorkOffine.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnWorkOffine.Location = new System.Drawing.Point(303, 140);
+            this.BtnWorkOffine.Name = "BtnWorkOffine";
+            this.BtnWorkOffine.Size = new System.Drawing.Size(61, 49);
+            this.BtnWorkOffine.TabIndex = 5;
+            this.BtnWorkOffine.Text = "Work Offline";
+            this.BtnWorkOffine.UseVisualStyleBackColor = true;
+            this.BtnWorkOffine.Click += new System.EventHandler(this.BtnWorkOffline_Click);
+            // 
+            // LabelOfflineWarning
+            // 
+            this.LabelOfflineWarning.Location = new System.Drawing.Point(2, 118);
+            this.LabelOfflineWarning.Name = "LabelOfflineWarning";
+            this.LabelOfflineWarning.Size = new System.Drawing.Size(375, 39);
+            this.LabelOfflineWarning.TabIndex = 6;
+            this.LabelOfflineWarning.Text = "If you click \'Work Offline\' the counter will stop immediately and access controls" +
+    " will be enabled.";
             // 
             // frmAlert
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Moccasin;
-            this.ClientSize = new System.Drawing.Size(207, 192);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(378, 201);
+            this.Controls.Add(this.BtnWorkOffine);
+            this.Controls.Add(this.LabelOfflineWarning);
+            this.Controls.Add(this.LabelImportantNotice);
             this.Controls.Add(this.lblCountdown);
-            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.LabInstruction2);
+            this.Controls.Add(this.LabelInstruction1);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAlert";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Alert";
+            this.Text = "Important Notice";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmAlert_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -109,9 +138,11 @@
 
         private System.Windows.Forms.Label lblCountdown;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label LabelInstruction1;
+        private System.Windows.Forms.Label LabInstruction2;
+        private System.Windows.Forms.Label LabelImportantNotice;
+        private System.Windows.Forms.Button BtnWorkOffine;
+        private System.Windows.Forms.Label LabelOfflineWarning;
     }
 }
 

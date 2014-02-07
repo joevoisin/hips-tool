@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace HIPControl
@@ -23,6 +24,12 @@ namespace HIPControl
                         return;
                 }
             }
+
+            do
+            {
+                Thread.Sleep(100);
+            } while (!Utils.HasGateway()); //should this timeout?
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Controller.Run();

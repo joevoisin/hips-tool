@@ -18,14 +18,16 @@ namespace HIPControl
 
         public frmAlert(string Message) : this()
         {
-            lblMessage.Text = Message;
+            LabelInstruction1.Text = Message;
         }
 
-        public string WarningText { get { return lblMessage.Text; } set { lblMessage.Text = value; } }
+        public string WarningText { get { return LabelInstruction1.Text; } set { LabelInstruction1.Text = value; } }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private void BtnWorkOffline_Click(object sender, EventArgs e)
         {
-            Close();
+            Globals.AlertTimer.Stop();
+            Utils.HideAlert();
+            Globals.AlertStart = null;
         }
 
         private void frmAlert_Load(object sender, EventArgs e)
@@ -44,11 +46,9 @@ namespace HIPControl
 
             lblCountdown.Text = String.Format("Time Remaining: {0:00}:{1:00}", remain.Minutes, remain.Seconds);
         }
-
+        private void label1_Click(object sender, EventArgs e)
+        { }
         private void lblMessage_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        { }
     }
 }
