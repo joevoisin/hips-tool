@@ -9,7 +9,7 @@ namespace HIPControl
     internal class Constants
     {
         internal const string HIPControlPath = @"C:\Program Files\McAfee\Host Intrusion Prevention\ClientControl.exe";
-        internal const string HIPStopParams = "/stop epolicy3.5";
+        internal const string HIPStopParams = "/stop epolicy3.5"; //change 'epolicy3.5' to actual password not the test password.
         internal const string HIPStartParams = "/start";
 
         //internal const string PingHosts = "DC01,DC02,DRDC01,DRDC02";
