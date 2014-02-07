@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace HIPControl
@@ -57,12 +58,21 @@ namespace HIPControl
 
         internal static void CleanUp()
         {
-            HideAlert();
+            Globals.AlertStart = null;
+
             if (Globals.AlertTimer != null)
             {
                 Globals.AlertTimer.Stop();
                 Globals.AlertTimer = null;
             }
+
+            HideAlert();
+
+        }
+
+        internal static bool HasGateway()
+        {
+            return System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
         }
 
     }

@@ -40,49 +40,29 @@ namespace HIPControl
             do
             {
                 Application.DoEvents();
-                if (Globals.AlertStart == null) 
-                    break;
-            } while ((DateTime.Now - Globals.AlertStart.Value).TotalMinutes < Constants.TimeOut);
 
+                Thread.Sleep(50); //don't chew up resources
 
-            Utils.HideAlert();
-
-            if (Globals.AlertTimer != null)
-            {
-                Globals.AlertTimer.Stop();    
-            }
+            } while (Globals.AlertStart != null && (DateTime.Now - Globals.AlertStart.Value).TotalMinutes < Constants.TimeOut);
         }
 
         static void AlertTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (Globals.AlertStart == null)
-            {
-                Globals.AlertTimer.Stop();
                 return;
-            }
 
-            var resp = PingHelper.PingHosts(new List<string>(Constants.PingHosts.Split(',')));
+            var resp = PingHelper.PingHosts(Constants.PingHosts.Split(',').ToList());
             if (resp.HasValue) //back on the domain
             {
-                Globals.AlertTimer.Stop();
-                Utils.HideAlert();
                 Globals.AlertStart = null;
-                //Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStartParams);
+                return;
             }
 
             var isOnline = WebHelper.HasWebTraffic();
             if (isOnline || (DateTime.Now - Globals.AlertStart.Value).TotalMinutes >= Constants.TimeOut)
-            {
-                Globals.AlertTimer.Stop();
-                Utils.HideAlert();
                 Globals.AlertStart = null;
-                //Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStartParams);
-
-            }
             else
-            {
                 Utils.ShowAlert(false);
-            }
 
         }
 
