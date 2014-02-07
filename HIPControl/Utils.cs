@@ -27,6 +27,7 @@ namespace HIPControl
             }
             catch (Exception)
             {
+                    //ignore
             }
         }
 

@@ -47,7 +47,17 @@ namespace HIPControl
 
         private void lblMessage_Click(object sender, EventArgs e)
         {
+            //nothing
+        }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            //nothing
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            //nothing
         }
 
     }

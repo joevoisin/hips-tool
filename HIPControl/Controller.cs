@@ -31,7 +31,7 @@ namespace HIPControl
             }
             Globals.AlertStart = DateTime.Now;
 
-            Globals.AlertTimer = new Timer(Constants.TimeOutWarnInterval * 60 * 1000);
+            Globals.AlertTimer = new Timer(Constants.RecheckInterval * 1000);
             Globals.AlertTimer.Enabled = true;
             Globals.AlertTimer.AutoReset = true;
             Globals.AlertTimer.Elapsed += AlertTimer_Elapsed;
