@@ -34,7 +34,7 @@
             this.LabelInstruction1 = new System.Windows.Forms.Label();
             this.LabInstruction2 = new System.Windows.Forms.Label();
             this.LabelImportantNotice = new System.Windows.Forms.Label();
-            this.WorkOffineButton = new System.Windows.Forms.Button();
+            this.BtnWorkOffine = new System.Windows.Forms.Button();
             this.LabelOfflineWarning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -85,14 +85,17 @@
             this.LabelImportantNotice.Text = "Important Notice";
             this.LabelImportantNotice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // WorkOffineButton
+            // BtnWorkOffine
             // 
-            this.WorkOffineButton.Location = new System.Drawing.Point(283, 140);
-            this.WorkOffineButton.Name = "WorkOffineButton";
-            this.WorkOffineButton.Size = new System.Drawing.Size(81, 51);
-            this.WorkOffineButton.TabIndex = 5;
-            this.WorkOffineButton.Text = "Work Offline";
-            this.WorkOffineButton.UseVisualStyleBackColor = true;
+            this.BtnWorkOffine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnWorkOffine.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnWorkOffine.Location = new System.Drawing.Point(303, 140);
+            this.BtnWorkOffine.Name = "BtnWorkOffine";
+            this.BtnWorkOffine.Size = new System.Drawing.Size(61, 49);
+            this.BtnWorkOffine.TabIndex = 5;
+            this.BtnWorkOffine.Text = "Work Offline";
+            this.BtnWorkOffine.UseVisualStyleBackColor = true;
+            this.BtnWorkOffine.Click += new System.EventHandler(this.BtnWorkOffline_Click);
             // 
             // LabelOfflineWarning
             // 
@@ -109,7 +112,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Moccasin;
             this.ClientSize = new System.Drawing.Size(378, 201);
-            this.Controls.Add(this.WorkOffineButton);
+            this.Controls.Add(this.BtnWorkOffine);
             this.Controls.Add(this.LabelOfflineWarning);
             this.Controls.Add(this.LabelImportantNotice);
             this.Controls.Add(this.lblCountdown);
@@ -138,7 +141,7 @@
         private System.Windows.Forms.Label LabelInstruction1;
         private System.Windows.Forms.Label LabInstruction2;
         private System.Windows.Forms.Label LabelImportantNotice;
-        private System.Windows.Forms.Button WorkOffineButton;
+        private System.Windows.Forms.Button BtnWorkOffine;
         private System.Windows.Forms.Label LabelOfflineWarning;
     }
 }

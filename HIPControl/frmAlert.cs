@@ -23,9 +23,13 @@ namespace HIPControl
 
         public string WarningText { get { return LabelInstruction1.Text; } set { LabelInstruction1.Text = value; } }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private void BtnWorkOffline_Click(object sender, EventArgs e)
         {
-            Close();
+            Globals.AlertTimer.Stop();
+            Utils.HideAlert();
+            Globals.AlertStart = null;
+            Utils.RunProcessSync(Constants.HIPControlPath, Constants.HIPStartParams);
+            return;
         }
 
         private void frmAlert_Load(object sender, EventArgs e)
@@ -44,21 +48,9 @@ namespace HIPControl
 
             lblCountdown.Text = String.Format("Time Remaining: {0:00}:{1:00}", remain.Minutes, remain.Seconds);
         }
-
-        private void lblMessage_Click(object sender, EventArgs e)
-        {
-            //nothing
-        }
-
         private void label1_Click(object sender, EventArgs e)
-        {
-            //nothing
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            //nothing
-        }
-
+        { }
+        private void lblMessage_Click(object sender, EventArgs e)
+        { }
     }
 }
