@@ -13,7 +13,7 @@ namespace HIPControl
         internal const string HIPStartParams = "/start";
 
         //internal const string PingHosts = "DC01,DC02,DRDC01,DRDC02";
-        internal const string PingHosts = "10.128.33.177,10.128.33.170,10.116.10.10,10.116.10.11";
+        internal const string PingHosts = "10.128.33.1,10.116.10.1";
         //internal const string PingHosts = "1.2.3.4";
 
         internal const string TestURL = "http://www.meridiancu.ca"; //url to test
